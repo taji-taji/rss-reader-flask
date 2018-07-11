@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web:
+    restart: always
+    build: ./app
+    working_dir: '/root/opt'
+    ports: ['5000:5000']
+    volumes: ['./app:/root/opt']
+    environment:
+      FLASK_APP: '/root/opt/main.py'
+    command: pipenv run flask run --host=0.0.0.0 --debugger
